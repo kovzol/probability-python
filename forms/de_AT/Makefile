@@ -3,7 +3,7 @@ all: 0.pdf 1.pdf
 0.pdf: 0.tex
 	pdflatex 0.tex
 
-1.pdf: 1.tex
+1.pdf: 1.tex main-py-window.png ../../progs/de_AT/1.py
 	pdflatex 1.tex
 
 clean:
