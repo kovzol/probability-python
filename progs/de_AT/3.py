@@ -5,6 +5,8 @@ Augenzahlen = {1, 2, 3, 4, 5, 6}
 Ω = set(itertools.product(Augenzahlen, Augenzahlen))
 print(Ω)
 # Beachte, dass Ω als Menge nicht sortiert ist.
+# Statt "set" kann auch "list" geschrieben werden:
+# dann wird die Menge schon sortiert.
 
 # 2. Anzahl Günstige und Mögliche bestimmen:
 günstig = 0
