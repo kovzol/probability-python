@@ -1,14 +1,18 @@
-möglich = 0
-günstig = 0
-for Münze1 in {"K","Z"}:
-  for Münze2 in {"K","Z"}:
-    for Münze3 in {"K","Z"}:
-      for Münze4 in {"K","Z"}:
-        for Münze5 in {"K","Z"}:
-          möglich = möglich + 1
-          # Eine Zeichenkette wird generiert:
-          Ausgang = Münze1 + Münze2 + Münze3 + Münze4 + Münze5 
-          if Ausgang.count("K")==2:
-            günstig = günstig + 1
-print(f"{günstig} von {möglich}")
-print(f"p = {günstig/möglich}")
+import itertools
+
+def X(ω):
+    """Studenten können diese Funktion selbst programmieren.
+    X ist Zufallsvariable, also X: Ω → ℝ.
+    Einem Ergebnis wird eine reelle Zahl zugeordnet."""
+    return ω[0]+ω[1]
+
+Augenzahlen = {1, 2, 3, 4, 5, 6}
+Ω = list(itertools.product(Augenzahlen, Augenzahlen))
+# Ereignis E
+E = []
+for ω in Ω:
+    if X(ω) == 10:
+        E.append(ω)
+print(f"{len(Ω)} mögliche Ergebnisse")
+print(f"{len(E)} günstige Ergebnisse")
+print(f"p = {len(E)/len(Ω)}")

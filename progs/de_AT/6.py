@@ -1,12 +1,22 @@
-möglich = 0
-Erwartungswert = 0
-for Kopf1 in [0,1]:
-  for Kopf2 in [0,1]:
-    for Kopf3 in [0,1]:
-      for Kopf4 in [0,1]:
-        möglich += 1
-        x = Kopf1 + Kopf2 + Kopf3 + Kopf4
-        print(f"Ereignis={Kopf1}{Kopf2}{Kopf3}{Kopf4}, x={x}")
-        Erwartungswert = Erwartungswert + x
-Erwartungswert = Erwartungswert / möglich
-print(f"E(X)={Erwartungswert}")
+import itertools
+# 1. Mathematische Grundmenge Ω besteht aus lauter 5-elementigen Tupeln, wobei K für Kopf und
+#    Z für Zahl steht. Jeder Buchstabe im Tupel repräsentiert den Ausgang einer geworfenen Münze.
+Ω = set(itertools.product({"K", "Z"}, repeat=5))
+print(Ω)
+
+# 2. Ω wird in eine für unser Programm brauchbarere Form transformiert. Aus den Tupeln werden
+#    Zeichenketten (strings) gemacht.
+Ω = {"".join(Ausgang) for Ausgang in Ω}
+print(Ω)
+
+# 3. Anzahl der günstigen und möglichen Ausgänge bestimmen:
+günstig = 0
+möglich = len(Ω)
+for Ausgang in Ω:
+    if Ausgang.count("K") == 2:
+        günstig = günstig + 1
+
+# 4. Ausgabe:
+print(f"{günstig} von {möglich}")
+print(f"p = {günstig/möglich}")
+
