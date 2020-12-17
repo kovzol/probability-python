@@ -6,7 +6,7 @@
 \usepackage{hyperref}
 \usepackage{amsmath,amssymb}
 \begin{document}
-\title{Übungsblatt 4}
+\title{Übungsblatt 5}
 \date{}
 \maketitle
 \lstset{language=Python,
@@ -49,29 +49,24 @@
 \thispagestyle{empty}
 \begin{enumerate}
 \item Betrachten wir folgendes Python3 Programm:
-\lstinputlisting[language=Python]{../../progs/de_AT/4.py}
+\lstinputlisting[language=Python]{../../progs/de_AT/5a.py}
 
 \begin{enumerate}
-\item Überprüfen Sie, ob das Programm richtig funktioniert. Speichern Sie als Beweis ein Bildschirmfoto ab.
-\item Erklären Sie die Unterschiede in diesem Programm und dem im Übungsblatt 3 (Aufgabe 1).
+\item Finden Sie eine passende Textaufgabe aus der Wahrscheinlichkeits\-rechnung, welche
+von diesem Programm gelöst wird.
+\item Geben Sie eine kurze mathematische Begründung an, warum die Antwort des Programms $\binom{5}{2}/2^5$ ist.
 \end{enumerate}
 
-\item Ändern Sie Ihr Programm in den 7.~und 14.~Zeilen, so dass Sie folgendes Beispiel lösen können:
-\begin{quote}
-Anna und Bernhard würfeln viermal hintereinander mit einem Würfel. 
-Wenn die Augensumme zwischen 7 und 14 ist, gewinnt Anna, sonst Bernhard.
-Welcher Spieler wird bei dem Spiel begünstigt?
-\end{quote}
+\item Betrachten wir folgendes Python3 Programm:
+\lstinputlisting[language=Python]{../../progs/de_AT/5b.py}
 
-\item Ändern Sie die Spielregeln in der obigen Aufgabe, so dass das Spiel gerecht sei.
-Überprüfen Sie Ihre Aufgabenstellung mithilfe von einem passenden Python3 Programm.
-
-\item Wir ersetzen die Zeilen 12--15 im obigen Programm mit der Zeile
-\begin{lstlisting}[language=Python,numbers=none]
-E = [ω for ω in Ω if X(ω) == 10]
-\end{lstlisting}
--- überprüfen Sie, dass dasselbe Resultat herauskommt.
-Geben Sie dann diese Zeile in einer mathematischen Form als Mengendefinition an.
+\begin{enumerate}
+\item Geben Sie die Zufallsvariable $X$ an, wessen Erwartungswert von diesem zweiten Programm ausgerechnet wird.
+\item Geben Sie eine kurze mathematische Begründung an, warum der Erwartungswert $2.5$ ist.
+Verallgemeinern Sie dieses Resultat auch für unterschiedliche Werte bei der Einstellung
+\texttt{repeat=5} in der 2.~Zeile des Programms.
+\item Erweitern Sie dieses zweite Programm, so dass auch die Varianz von $X$ berechnet wird.
+\end{enumerate}
 
 \end{enumerate}
 \end{document}
