@@ -1,12 +1,9 @@
-möglich = 0
-Erwartungswert = 0
-for Kopf1 in [0,1]:
-  for Kopf2 in [0,1]:
-    for Kopf3 in [0,1]:
-      for Kopf4 in [0,1]:
-        möglich += 1
-        x = Kopf1 + Kopf2 + Kopf3 + Kopf4
-        print(f"Ereignis={Kopf1}{Kopf2}{Kopf3}{Kopf4}, x={x}")
-        Erwartungswert = Erwartungswert + x
-Erwartungswert = Erwartungswert / möglich
-print(f"E(X)={Erwartungswert}")
+import itertools
+max_Würfe = 4
+Anzahl_Köpfe = [[0] * (max_Würfe * 7)] * (max_Würfe + 1)
+for W in range(1, max_Würfe + 1):
+    Ω = set(itertools.product({1, 2, 3, 4, 5, 6}, repeat=W))
+    for ω in Ω:
+        Anzahl_Köpfe[W][sum(ω)] += 1
+    Wahrscheinlichkeiten = [h/len(Ω) for h in Anzahl_Köpfe[W]]
+    print(Wahrscheinlichkeiten)

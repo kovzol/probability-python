@@ -1,0 +1,97 @@
+\documentclass{article}
+\usepackage{listingsutf8,newtxtt,xcolor,graphicx}
+\usepackage[hyphens]{xurl}
+\addtolength{\topmargin}{-.875in}
+\addtolength{\textheight}{1.75in}
+\usepackage{hyperref}
+\usepackage{amsmath,amssymb}
+\usepackage{geometry}
+\begin{document}
+\title{Übungsblatt 6}
+\date{}
+\maketitle
+\lstset{language=Python,
+  numbers=left,
+  basicstyle=\ttfamily,
+  keywordstyle=\bfseries\color{magenta},
+  stringstyle=\color{red},
+  numberstyle=\color{blue},
+  breaklines=true,
+  showstringspaces=false,
+  backgroundcolor=\color{yellow!30},
+  ndkeywordstyle=\color{magenta!70},
+  commentstyle=\color{green},
+  identifierstyle=\color{black},
+  literate=
+  {á}{{\'a}}1 {é}{{\'e}}1 {í}{{\'i}}1 {ó}{{\'o}}1 {ú}{{\'u}}1
+  {Á}{{\'A}}1 {É}{{\'E}}1 {Í}{{\'I}}1 {Ó}{{\'O}}1 {Ú}{{\'U}}1
+  {à}{{\`a}}1 {è}{{\`e}}1 {ì}{{\`i}}1 {ò}{{\`o}}1 {ù}{{\`u}}1
+  {À}{{\`A}}1 {È}{{\'E}}1 {Ì}{{\`I}}1 {Ò}{{\`O}}1 {Ù}{{\`U}}1
+  {ä}{{\"a}}1 {ë}{{\"e}}1 {ï}{{\"i}}1 {ö}{{\"o}}1 {ü}{{\"u}}1
+  {Ä}{{\"A}}1 {Ë}{{\"E}}1 {Ï}{{\"I}}1 {Ö}{{\"O}}1 {Ü}{{\"U}}1
+  {â}{{\^a}}1 {ê}{{\^e}}1 {î}{{\^i}}1 {ô}{{\^o}}1 {û}{{\^u}}1
+  {Â}{{\^A}}1 {Ê}{{\^E}}1 {Î}{{\^I}}1 {Ô}{{\^O}}1 {Û}{{\^U}}1
+  {Ã}{{\~A}}1 {ã}{{\~a}}1 {Õ}{{\~O}}1 {õ}{{\~o}}1
+  {œ}{{\oe}}1 {Œ}{{\OE}}1 {æ}{{\ae}}1 {Æ}{{\AE}}1 {ß}{{\ss}}1
+  {ű}{{\H{u}}}1 {Ű}{{\H{U}}}1 {ő}{{\H{o}}}1 {Ő}{{\H{O}}}1
+  {ç}{{\c c}}1 {Ç}{{\c C}}1 {ø}{{\o}}1 {å}{{\r a}}1 {Å}{{\r A}}1
+  {€}{{\euro}}1 {£}{{\pounds}}1 {«}{{\guillemotleft}}1
+  {»}{{\guillemotright}}1 {ñ}{{\~n}}1 {Ñ}{{\~N}}1 {¿}{{?`}}1
+  {Ω}{{$\Omega$}}1
+  {ω}{{$\omega$}}1
+  {→}{{$\to$}}1
+  {ℝ}{{$\mathbb{R}$}}1,
+  columns=fullflexible,
+  keepspaces=true
+}
+\makeatletter
+\def\lst@outputspace{{\ifx\lst@bkgcolor\empty\color{white}\else\lst@bkgcolor\fi\lst@visiblespace}}
+\makeatother
+\thispagestyle{empty}
+\begin{enumerate}
+\item Die folgenden Python3 Programme berechnen dieselben Resultate:
+\lstinputlisting[language=Python]{../../progs/de_AT/6a.py}
+\lstinputlisting[language=Python]{../../progs/de_AT/6b.py}
+
+\begin{enumerate}
+\item Überprüfen Sie, dass die Resultate übereinstimmen, auch für 6 oder 7 Würfe.
+\item Erklären Sie, wie die Programme funktionieren. Welche Unterschiede finden Sie zwischen denen?
+\end{enumerate}
+
+\eject
+
+\item Betrachten wir folgendes Programm:
+\lstinputlisting[language=Python]{../../progs/de_AT/6c.py}
+
+\begin{enumerate}
+\item Welche Berechnung wird vom Programm durchgeführt?
+\item Betrachten wir folgende Änderungen:
+\begin{lstlisting}[language=Python,firstnumber=2]
+Ω = set(itertools.product({1, 2, 3, 4, 5, 6}, repeat=4))
+mögliche_Werte = range(30)
+\end{lstlisting}
+\begin{lstlisting}[language=Python,firstnumber=8]
+    Anzahl_Köpfe[sum(ω)] += 1
+\end{lstlisting}
+Erklären Sie das Resultat von diesem geänderten Programm!
+\item Wir versuchen nun ein graphisches Diagramm zu erstellen. Deswegen
+betrachten wir folgende Änderungen (statt der 10.~Zeile):
+\begin{lstlisting}[language=Python,firstnumber=10]
+for w in zip(*(mögliche_Werte, Wahrscheinlichkeiten)):
+    print(f"{w[0]},{w[1]}")
+\end{lstlisting}
+Kopieren Sie den Output dieses Programms in ein Tabellenkalkulationsprogramm ein
+und erstellen Sie ein XY-Diagramm, sodass die Wahrscheinlichkeitsverteilung
+graphisch dargestellt wird! Tipp: Die Sprache der Tabelle muss auf Englisch
+geändert werden, sodass der Dezimalpunkt von Python richtig interpretiert wird.
+Hinweis: Google Tabellen kann die Beistriche auch als Trennungszeichen interpretieren,
+siehe \url{http://apps-experts.de/2016/03/neue-funktion-text-in-spalten-fuer-google-tabellen/}.
+\item Ergänzen Sie das Programm mit den nächsten zwei Zeilen:
+\begin{lstlisting}[language=Python,firstnumber=12]
+Verteilung = [sum(Wahrscheinlichkeiten[:h]) for h in mögliche_Werte]
+print(list(zip(*(mögliche_Werte, Verteilung))))
+\end{lstlisting}
+Erklären Sie, welche Berechnung hier durchgeführt wird.
+\end{enumerate}
+\end{enumerate}
+\end{document}
