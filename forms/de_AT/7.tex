@@ -1,11 +1,11 @@
 \documentclass{article}
 \usepackage{listingsutf8,newtxtt,xcolor,graphicx}
 \usepackage[hyphens]{xurl}
-\addtolength{\topmargin}{-.875in}
-\addtolength{\textheight}{1.75in}
 \usepackage{hyperref}
 \usepackage{amsmath,amssymb}
 \usepackage{geometry}
+\addtolength{\topmargin}{-.875in}
+\addtolength{\textheight}{1.75in}
 \begin{document}
 \title{Übungsblatt 7}
 \date{}
@@ -50,12 +50,21 @@
 \thispagestyle{empty}
 
 \noindent Betrachten wir folgendes Programm:
-\lstinputlisting[language=Python]{../../progs/de_AT/7.py}
+\lstinputlisting[language=Python]{../../progs/de_AT/7a.py}
 
 \begin{enumerate}
 \item Welche Resultate werden vom Programm berechnet?
-\item Erstellen Sie ein Liniendiagramm, welches die Resultate grafisch darstellt.
-\item Erklären Sie mit möglichst präzisen mathematischen Begriffen, wie das Liniendiagramm interpretiert werden kann.
+\item Erstellen Sie Liniendiagramme, welche die Resultate grafisch darstellen. (Für jede
+Dichtefunktion sollten Sie eine einzige Kurve erstellen und alle Kurven indemselben Graphen
+dar\-stellen.) Tipp: Falls Sie die Website \url{cocalc.com} nutzen und ein Sage Worksheet
+erstellen, können Sie alle Liniendiagramme automatisch darstellen:
+\lstinputlisting[language=Python]{../../progs/de_AT/7b.py}
+Eventuell können Sie statt der 10.~Zeile folgenden Befehl nutzen:
+\begin{lstlisting}[language=Python,firstnumber=10]
+    p.bar(range(1, max_Würfe * 6 + 1), Wahrscheinlichkeiten[1:], alpha=0.5)
+\end{lstlisting}
+Welchen grafischen Unterschied gibt es zwischen den zwei Darstellungen?
+\item Erklären Sie mit möglichst präzisen mathematischen Begriffen, wie die Liniendiagramme interpretiert werden können.
 Wichtige Hinweise:
 \begin{enumerate}
 \item Lesen Sie so viele Eigenschaften ab, wie es möglich ist.

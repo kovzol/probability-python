@@ -21,7 +21,7 @@ all: 0.pdf 1.pdf 2.pdf 3.pdf 4.pdf 5.pdf 6.pdf 7.pdf
 6.pdf: 6.tex ../../progs/de_AT/6a.py ../../progs/de_AT/6b.py ../../progs/de_AT/6c.py
 	pdflatex 6.tex
 
-7.pdf: 7.tex ../../progs/de_AT/7.py
+7.pdf: 7.tex ../../progs/de_AT/7a.py ../../progs/de_AT/7b.py
 	pdflatex 7.tex
 
 clean:
