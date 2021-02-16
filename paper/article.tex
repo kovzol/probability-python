@@ -1,0 +1,117 @@
+% interacttfssample.tex
+% v1.05 - August 2017
+
+\documentclass[]{interact}
+
+\usepackage{epstopdf}% To incorporate .eps illustrations using PDFLaTeX, etc.
+\usepackage[caption=false]{subfig}% Support for small, `sub' figures and tables
+%\usepackage[nolists,tablesfirst]{endfloat}% To `separate' figures and tables from text if required
+
+%\usepackage[doublespacing]{setspace}% To produce a `double spaced' document if required
+%\setlength\parindent{24pt}% To increase paragraph indentation when line spacing is doubled
+%\setlength\bibindent{2em}% To increase hanging indent in bibliography when line spacing is doubled
+
+\usepackage[numbers,sort&compress]{natbib}% Citation support using natbib.sty
+\bibpunct[, ]{[}{]}{,}{n}{,}{,}% Citation support using natbib.sty
+\renewcommand\bibfont{\fontsize{10}{12}\selectfont}% Bibliography support using natbib.sty
+
+\theoremstyle{plain}% Theorem-like structures provided by amsthm.sty
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{proposition}[theorem]{Proposition}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+
+\theoremstyle{remark}
+\newtheorem{remark}{Remark}
+\newtheorem{notation}{Notation}
+
+\begin{document}
+
+\articletype{ARTICLE TEMPLATE}% Specify the article type or omit as appropriate
+
+\title{Towards understanding the central limit theorem by learning Python basics}
+
+\author{
+\name{Zolt\'an Kov\'acs\textsuperscript{a}\thanks{CONTACT Z. Kov\'acs. Email: zoltan@geogebra.org}
+and Alexander Thaller\textsuperscript{b}}
+\affil{\textsuperscript{a}
+The Private University College of Education of the Diocese of Linz,
+Salesianumweg 3, Linz, Austria;
+\textsuperscript{b}Linz School of Education,
+Altenberger Stra\ss e 54, Linz, Austria}
+}
+
+\maketitle
+
+\begin{abstract}
+
+We report on a first experiment about an email based course that connects learning
+Python basics and introductory probability theory. In the experiment 7 short sequences
+of homework were sent out to prospective mathematics teachers who did not have
+any programming background formerly, but already had some minor knowledge on probability theory.
+The experiment was about to decide if learning basics of programming can promote
+understanding main concepts of probability theory.
+\end{abstract}
+
+\begin{keywords}
+Python; programming; probability theory; central limit theorem
+\end{keywords}
+
+\section{Introduction}
+
+We, the authors, have been spending a reasonable time with private tutoring in many fields
+of mathematics---we are teachers. And, we agree on that probability theory is maybe
+the most difficult field of mathematics---if it is about \textit{understanding}. For us, rough explanation
+of statistical relationships seems to be easier than explaining the delicate issues
+of properties of binomial coefficients, infinite sums and convergence. Indeed, in some
+sense, statistics is much easier to explain---one needs to run virtual experiments
+in a web browser % add links to Steve Phelps' https://www.geogebra.org/m/bxytp4hq, Ice Cream
+% https://www.geogebra.org/m/qsjbqjfe, Broken Stick
+% https://www.geogebra.org/m/bu5sxbn2, Fair Coin
+% + Andreas Lindner's collections: https://www.geogebra.org/m/AytaSakt, https://www.geogebra.org/m/qXPnyCTZ
+and this is well supported for several years, among others, in the online version of GeoGebra.
+
+Connecting pure mathematics and real life or virtual experiments, can be, to our experience,
+extremely hard. Probability is an important item of the curriculum at secondary level,
+thus it is also an important item in the teacher training. But, to our experience,
+most prospective teachers \textit{never} understand the basics beyond introductory level.
+Our conjecture is that the main problem lies in students' verification if theory indeed meets practice,
+so, at the end of the day, a very uncertain knowledge can be observed in the students' perception. As a consequence,
+in most cases, not just yesterday's and today's mathematics teachers cannot connect
+theory and practice, but their students either. Roughly speaking: everybody talks about probability and
+statistics, but nobody understands anything behind the scenes.
+
+In our paper we propose a radical way, or at least, to extend the classic way how
+basics of elementary probability theory should be taught. It is \textit{programming}.
+Our conjecture is that understanding will be significantly improved if the main concepts
+of probability theory are supported with simple computer programs. The ouput for their flexible input
+should be immediately checked, eventually in a web browser, and by changing the input parameters
+to a higher number, the results can be quickly generalized. We emphasize that computers
+can take on the high number of computatations from human---and this is what we exactly want.
+A quite simple \textit{sample space} can contain \textit{a lot} of elements, even millions or more, and it cannot
+be expected that non-experts can count their elements without deeper knowledge. In fact,
+experts in probability are usually experts in combinatorics as well. To reach a reasonable
+level of understanding of the main concepts in probability, by using just paper and pencil,
+one needs to have a very strong and \textit{safe} background in combinatorics.
+
+In this paper we demonstrate our proposal by explaining an email based course, sent out
+to 4 prospective mathematics teachers, allowing them an arbitrary time to solve the problems being set.
+The students claimed that they did not have any deeper knowledge in programming formerly, but all of
+them already studied probability theory at university level. Their knowledge, however, was
+not yet checked via examination. The course consisted of 7 sets of homework assignments
+and took place between November 2020 and January 2021, at the Johannes Kepler University of Linz, Austria.
+
+\section{Preparations}
+
+\section*{Acknowledgement(s)}
+
+\begin{thebibliography}{99}
+
+
+\end{thebibliography}
+
+\end{document}
