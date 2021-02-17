@@ -29,6 +29,43 @@
 \newtheorem{remark}{Remark}
 \newtheorem{notation}{Notation}
 
+% Own definitions (Zoltan)
+\usepackage{listingsutf8,newtxtt,xcolor,graphicx,xurl}
+\lstset{language=Python,
+  basicstyle=\ttfamily,
+  keywordstyle=\bfseries\color{magenta},
+  stringstyle=\color{red},
+  numberstyle=\color{blue}
+  breaklines=true,
+  showstringspaces=false,
+  backgroundcolor=\color{yellow!30},
+  ndkeywordstyle=\color{yellow},
+  commentstyle=\color{green},
+  identifierstyle=\color{black},
+  literate=
+  {á}{{\'a}}1 {é}{{\'e}}1 {í}{{\'i}}1 {ó}{{\'o}}1 {ú}{{\'u}}1
+  {Á}{{\'A}}1 {É}{{\'E}}1 {Í}{{\'I}}1 {Ó}{{\'O}}1 {Ú}{{\'U}}1
+  {à}{{\`a}}1 {è}{{\`e}}1 {ì}{{\`i}}1 {ò}{{\`o}}1 {ù}{{\`u}}1
+  {À}{{\`A}}1 {È}{{\'E}}1 {Ì}{{\`I}}1 {Ò}{{\`O}}1 {Ù}{{\`U}}1
+  {ä}{{\"a}}1 {ë}{{\"e}}1 {ï}{{\"i}}1 {ö}{{\"o}}1 {ü}{{\"u}}1
+  {Ä}{{\"A}}1 {Ë}{{\"E}}1 {Ï}{{\"I}}1 {Ö}{{\"O}}1 {Ü}{{\"U}}1
+  {â}{{\^a}}1 {ê}{{\^e}}1 {î}{{\^i}}1 {ô}{{\^o}}1 {û}{{\^u}}1
+  {Â}{{\^A}}1 {Ê}{{\^E}}1 {Î}{{\^I}}1 {Ô}{{\^O}}1 {Û}{{\^U}}1
+  {Ã}{{\~A}}1 {ã}{{\~a}}1 {Õ}{{\~O}}1 {õ}{{\~o}}1
+  {œ}{{\oe}}1 {Œ}{{\OE}}1 {æ}{{\ae}}1 {Æ}{{\AE}}1 {ß}{{\ss}}1
+  {ű}{{\H{u}}}1 {Ű}{{\H{U}}}1 {ő}{{\H{o}}}1 {Ő}{{\H{O}}}1
+  {ç}{{\c c}}1 {Ç}{{\c C}}1 {ø}{{\o}}1 {å}{{\r a}}1 {Å}{{\r A}}1
+  {€}{{\euro}}1 {£}{{\pounds}}1 {«}{{\guillemotleft}}1
+  {»}{{\guillemotright}}1 {ñ}{{\~n}}1 {Ñ}{{\~N}}1 {¿}{{?`}}1,
+  columns=fullflexible,
+  keepspaces=true
+}
+\makeatletter
+\def\lst@outputspace{{\ifx\lst@bkgcolor\empty\color{white}\else\lst@bkgcolor\fi\lst@visiblespace}}
+\makeatother
+
+
+
 \begin{document}
 
 \articletype{ARTICLE TEMPLATE}% Specify the article type or omit as appropriate
@@ -106,6 +143,74 @@ not yet checked via examination. The course consisted of 7 sets of homework assi
 and took place between November 2020 and January 2021, at the Johannes Kepler University of Linz, Austria.
 
 \section{Preparations}
+
+First author hold a series of supplementary lectures on probability theory two years ago, where second author
+took part a student and illustrated several homework assignments by using Python programs.
+Some of his illustrations were a bit complicated for beginners, so the idea came that
+simplified versions of such programs could be helpful for many students.
+But, instead of giving a problem in probability theory and asking for a solution, in this
+project we reversed the logic: We revealed the Python code in advance, and wanted to know
+what problem will be solved with its help.
+
+%\begin{figure}
+%\lstinputlisting[language=Python]{../progs/de_AT/1.py}
+%\caption{The first program in its original form (in German)}
+%\label{1.py}
+%\end{figure}
+
+The first example is shown in Fig.~\ref{main-py-window}. We kept the original version to highlight
+the possibility to write special characters in the Python code (we used Python version 3),
+including accented German letters. In the first set of problems each student had to try
+the code on his or her own on the website \url{https://repl.it/languages/python3},
+by paying attention on the correct indentation as well. We instructed all students with an
+explanatory screenshot how the program should be started and the output obtained.
+
+\begin{figure}
+\begin{center}\includegraphics[scale=0.5]{../forms/de_AT/main-py-window}
+\caption{An explanatory screenshot to help the students' first steps}
+\label{main-py-window}
+\end{center}
+\end{figure}
+
+In this introductory set the first question was to make the program work by running it.
+To give a somewhat creative assignment we also asked how the output 3 can be changed to
+the number 6. The outcome of this puzzle will be analyzed later in Section \ref{problem-sets}.
+
+In fact, we created a couple of other programs in advance, but always waited for
+all solutions turned in by the students before finalizing the next set of problems.
+We \textit{did not} give any feedback on their solutions. Instead, if we felt that
+some difficulties arose, then we tried to cover them in the next set of problems.
+The reason behind this was to test if it is possible to create a set of problems
+\textit{in advance} for a possible \textit{static} learning path. Even if our experiment
+was not fully static, for a future project now we already have a static set of materials.
+
+Here we emphasize that easy access to an online version of a Python interpreter
+played a significant role in our project. We did not want to ask the students
+to install anything on their computer. Instead, we tried to minimize the gap
+between theory and practice. In fact, \url{repl.it} is not the only website
+allowing the user to try his or her code freely---we were just
+satisfied with its simple user interface. Later, to obtain graphical output in an easy way, we also
+introduced how Sage worksheets at \url{cocalc.com} can be accessed---in this latter case,
+however, accented letters did not look elegant.
+
+Importantly, we simplified and minimized the code we used during the email course.
+This pre-process required several discussions among the authors to avoid
+the technical difficulties of the programming language, but still allow
+obtaining simple outputs. We had to balance between readability, simplicity,
+elegance and speed. We learned that Python itself could be improved to
+have simpler constructions than the \texttt{for i in range(...)} loop for iteration.
+At the end of day we were still satisfied with all of the code and the students'
+solutions confirm that our choices were acceptable.
+
+As an example of a successful balance, we mention that we heavily used Python's support
+for Unicode variable names.
+We denoted the sample space by $\Omega$ and a single outcome by $\omega$ since
+these notations were already well-known for the students. On the other hand,
+typing these Greek characters is not straightforward: one may need to copy-paste
+them since they are not available on a German keyboard.
+
+\section{The problem sets}
+\label{problem-sets}
 
 \section*{Acknowledgement(s)}
 
