@@ -57,7 +57,11 @@
   {ű}{{\H{u}}}1 {Ű}{{\H{U}}}1 {ő}{{\H{o}}}1 {Ő}{{\H{O}}}1
   {ç}{{\c c}}1 {Ç}{{\c C}}1 {ø}{{\o}}1 {å}{{\r a}}1 {Å}{{\r A}}1
   {€}{{\euro}}1 {£}{{\pounds}}1 {«}{{\guillemotleft}}1
-  {»}{{\guillemotright}}1 {ñ}{{\~n}}1 {Ñ}{{\~N}}1 {¿}{{?`}}1,
+  {»}{{\guillemotright}}1 {ñ}{{\~n}}1 {Ñ}{{\~N}}1 {¿}{{?`}}1
+  {Ω}{{$\Omega$}}1
+  {ω}{{$\omega$}}1
+  {→}{{$\to$}}1
+  {ℝ}{{$\mathbb{R}$}}1,
   columns=fullflexible,
   keepspaces=true
 }
@@ -278,13 +282,96 @@ by an explanation given in an email answer. Here we made an exception and forced
 communication to clarify this basic concept.)
 
 In general we were satisfied with the students' answers. All of them learned how three loops can
-be nested to iterate on $\Omega=[1,2,\ldots,6]^3$. Multiple ways were found to express monotonicity,
+be nested to iterate on $\Omega=\{1,2,\ldots,6\}^3$. Multiple ways were found to express monotonicity,
 including both the construct with an \texttt{and} clause and the short form
 \texttt{outcome\_die\_1 <= outcome\_die\_2 <= outcome\_die\_3} which is one of Python's strengths.
 
-In our experience it turned out that with little work a definitely large probability space
-can be studied. In fact, manual check of $[1,2,\ldots,6]^3$ (or, equivalently, deriving the sum
+In our experience it turned out that with little work a definitely large sample space
+can be studied. In fact, manual check of $\{1,2,\ldots,6\}^3$ (or, equivalently, deriving the sum
 $1+3+6+10+15+21$) is much more time consuming than writing a suitable program.
+
+\subsection*{Sheet 3}
+
+Fig.~\ref{3.py} shows the main code that was announced in the third sheet.
+
+\begin{figure}
+\lstinputlisting[language=Python]{../progs/en_US/3.py}
+\caption{The third program (translated into English)}
+\label{3.py}
+\end{figure}
+
+With this program we introduced some handy techniques via \texttt{itertools.product}
+to define Cartesian powers. We pointed to
+the second sheet and asked the students to rewrite their programs by using the new techniques.
+We also asked them to display all desired outcomes on the screen (with the \texttt{print} command)
+in a sorted fashion (via the \texttt{list} datatype).
+
+We had positive feedback---they managed to understand the point. A student successfully generalized the 
+solution for the puzzle of the second sheet for 5 dice, even if it was not directly asked.
+
+\subsection*{Sheet 4}
+
+The fourth sheet consisted of the following four questions:
+
+\begin{enumerate}
+\item Consider the following program:
+\lstinputlisting[language=Python]{../progs/en_US/4.py}
+
+\begin{enumerate}
+\item Check if the program works properly. Save a screenshot for an evidence.
+\item Explain the difference between this program and the one in sheet 3.
+\end{enumerate}
+
+\item Modify the program on line 7 and 14 in order to solve this problem:
+\begin{quote}
+Alice und Bob roll a die four times consecutively.
+If the sum of the outcomes is between 7 and 14, Alice wins, otherwise Bob.
+For which player is the game advantageous?
+\end{quote}
+
+\item Change the rules of the game above to get a fair play.
+Verify the changed rules by writing a suitable program.
+
+\item Assume that lines 12--15 are replaced by the following ones:
+\begin{lstlisting}[language=Python,numbers=none]
+E = [ω for ω in Ω if X(ω) == 10]
+\end{lstlisting}
+Check that the same result can be obtained as before.
+Also, explain this short form by using a mathematical formula like a definition for a set.
+\end{enumerate}
+
+In this sheet we focused on the concept of random variables. To highlight their importance
+we defined a Python function \texttt{X($\omega$)}.
+
+\subsubsection*{The results}
+
+The students answered the questions generally quite well. Two of them remarked that
+the problem setting in question 2 was incomplete since line 10 has to be changed as well.
+
+It turned out that the ``copy-paste'' way of copying a program was technically not always
+straightforward---sometimes indentation was transferred improperly and some manual edit
+was required on the student's side.
+
+Fig.~\ref{42} shows a solution by a student for question 3. It is clear that this
+student successfully combined previous programming knowledge, theory and praxis. Similarly,
+two other students found the same idea to change the limits to have $7\leq X(\omega)\leq14$,
+and one of them tried several attempts to find better limits---without success.
+(Note that for an even number of dice there is no trivial solution by halving the
+sample space symmetrically in the middle. So, in some sense, question 3 is adequate to motivate
+experimenting.)
+
+\begin{figure}
+\begin{center}\includegraphics[width=1.0\textwidth]{42}
+\caption{A student's solution for question 3 in sheet 4}
+\label{42}
+\end{center}
+\end{figure}
+
+The last question was solved perfectly by 3 students, giving the answer
+$$E=\{\omega\;\mid\;\omega\in\Omega \land X(\omega)=10\}$$
+where $X(\omega)=\omega_1+\omega_2$. Here we concluded that the technical
+fact that Python's indexing starts from $0$, can be confusing for beginners,
+since in mathematics the usual indexing starts from $1$.
 
 \section*{Acknowledgement(s)}
 
