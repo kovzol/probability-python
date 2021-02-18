@@ -32,14 +32,15 @@
 % Own definitions (Zoltan)
 \usepackage{listingsutf8,newtxtt,xcolor,graphicx,xurl}
 \lstset{language=Python,
+  numbers=left,
   basicstyle=\ttfamily,
   keywordstyle=\bfseries\color{magenta},
   stringstyle=\color{red},
-  numberstyle=\color{blue}
+  numberstyle=\color{blue},
   breaklines=true,
   showstringspaces=false,
   backgroundcolor=\color{yellow!30},
-  ndkeywordstyle=\color{yellow},
+  ndkeywordstyle=\color{magenta!70},
   commentstyle=\color{green},
   identifierstyle=\color{black},
   literate=
@@ -139,10 +140,11 @@ In this paper we demonstrate our proposal by explaining an email based course, s
 to 4 prospective mathematics teachers, allowing them an arbitrary time to solve the problems being set.
 The students claimed that they did not have any deeper knowledge in programming formerly, but all of
 them already studied probability theory at university level. Their knowledge, however, was
-not yet checked via examination. The course consisted of 7 sets of homework assignments
+not yet checked via examination. The course consisted of 7 sheets of homework assignments
 and took place between November 2020 and January 2021, at the Johannes Kepler University of Linz, Austria.
 
 \section{Preparations}
+\label{preps}
 
 First author hold a series of supplementary lectures on probability theory two years ago, where second author
 took part a student and illustrated several homework assignments by using Python programs.
@@ -160,7 +162,7 @@ what problem will be solved with its help.
 
 The first example is shown in Fig.~\ref{main-py-window}. We kept the original version to highlight
 the possibility to write special characters in the Python code (we used Python version 3),
-including accented German letters. In the first set of problems each student had to try
+including accented German letters. In the first sheet of problems each student had to try
 the code on his or her own on the website \url{https://repl.it/languages/python3},
 by paying attention on the correct indentation as well---the students, however, did not have
 to type the code but just copy it from the email into the programming window.
@@ -174,14 +176,20 @@ explanatory screenshot how the program should be started and the output obtained
 \end{center}
 \end{figure}
 
-In this introductory set the first question was to make the program work by running it.
-To give a somewhat creative assignment we also asked how the output 3 can be changed to
-the number 6. The outcome of this puzzle will be analyzed later in Section \ref{problem-sets}.
+In this introductory sheet the first question was to make the program work by running it,
+and then explain its meaning line by line.
+To give a somewhat creative assignment we also asked how the output $2/6$ can be changed to
+the $3/6$. The outcome of this puzzle will be analyzed later in Section \ref{problem-sheets}.
+
+It was expected that the students solve the sheet problems on their own, without
+any communication. However, external help like using Internet was allowed for them.
+The students were informed that about 6--8 sheets should be solved in the project,
+and the required time for each should not exceed one hour.
 
 In fact, we created a couple of other programs in advance, but always waited for
-all solutions turned in by the students before finalizing the next set of problems.
+all solutions turned in by the students before finalizing the next sheet of problems.
 We \textit{did not} give any feedback on their solutions. Instead, if we felt that
-some difficulties arose, then we tried to cover them in the next set of problems.
+some difficulties arose, then we tried to cover them in the next sheet of problems.
 The reason behind this was to test if it is possible to create a set of problems
 \textit{in advance} for a possible \textit{static} learning path. Even if our experiment
 was not fully static, for a future project now we already have a static set of materials.
@@ -211,8 +219,72 @@ these notations were already well-known for the students. On the other hand,
 typing these Greek characters is not straightforward: one may need to copy-paste
 them since they are not available on a German keyboard.
 
-\section{The problem sets}
-\label{problem-sets}
+\section{The problem sheets}
+\label{problem-sheets}
+
+\subsection*{Sheet 1}
+The first sheet has already been mentioned in Section \ref{preps}.
+The expected explanation of the Python program was solved well by the students.
+All of them managed to write a correct answer to the creative question, namely
+\begin{lstlisting}[language=Python,firstnumber=5]
+  if Augenzahl > 3:
+\end{lstlisting}
+One student mentioned that the same output can be obtained with this change:
+\begin{lstlisting}[language=Python,firstnumber=2]
+günstig = 1
+\end{lstlisting}
+when line 5 is kept in its original form. Of course, this answer makes sense
+only from the programmer's point of view, and it has less to do with probability.
+
+After receiving the results for the first sheet we had the impression that
+the students got familiar with the basics of the required technology.
+
+\subsection*{Sheet 2}
+
+The second sheet consisted of the following four questions:
+
+\begin{enumerate}
+\item Consider the following program:
+\lstinputlisting[language=Python]{../progs/en_US/2.py}
+
+\item Explain its meaning line by line, in one sentence for each.
+
+\item Give the probability space where the possible outcomes are counted.
+Which event has been identified here as ``desired''?
+
+\item Modify the program to get a mechanical solution for the following question:
+
+\begin{quote}
+One fair die is rolled three times. Compute the probability for the event that the outcomes
+correspond to a monotone increasing sequence.
+\end{quote}
+
+\end{enumerate}
+
+We asked the students to try to solve the sheet problems without using any external help.
+In case of lack of success
+they were allowed to use a website that explains how to use if-then-else conditions in Python.
+
+All students faced the quoted question during the introductory course in probability, but that time the solution
+was expected to follow a purely pencil-and-paper method.
+
+\subsubsection*{The results}
+
+This sheet was much more difficult than the first one. One student reported that about an hour was required to solve it.
+We learned that one student has a misconception by mixing relative frequency and probability---it was
+a kind of surprise for this student that the program computes \textit{probability}, even if
+there is no randomness built in. (In this case the students' misconception was corrected
+by an explanation given in an email answer. Here we made an exception and forced
+communication to clarify this basic concept.)
+
+In general we were satisfied with the students' answers. All of them learned how three loops can
+be nested to iterate on $\Omega=[1,2,\ldots,6]^3$. Multiple ways were found to express monotonicity,
+including both the construct with an \texttt{and} clause and the short form
+\texttt{outcome_die_1 <= outcome_die_2 <= outcome_die_3} which is one of Python's strengths.
+
+In our experience it turned out that with little work a definitely large probability space
+can be studied. In fact, manual check of $[1,2,\ldots,6]^3$ (or, equivalently, deriving the sum
+$1+3+6+10+15+21$) is much more time consuming than writing a suitable program.
 
 \section*{Acknowledgement(s)}
 
