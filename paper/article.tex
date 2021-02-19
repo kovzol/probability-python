@@ -373,6 +373,210 @@ where $X(\omega)=\omega_1+\omega_2$. Here we concluded that the technical
 fact that Python's indexing starts from $0$, can be confusing for beginners,
 since in mathematics the usual indexing starts from $1$.
 
+\subsection*{Sheet 5}
+
+Fig.~\ref{5a.py} shows the first program in the fifth sheet. The students' assignment was
+to find a text problem that is solved by the program.
+
+\begin{figure}
+\lstinputlisting[language=Python]{../progs/en_US/5a.py}
+\caption{The first program in the fifth sheet (translated into English)}
+\label{5a.py}
+\end{figure}
+
+To find a connection with binomial coefficients, the students had to explain why the result
+equals to $\binom{5}{2}/2^5$. A technical question helped in improving the look of the output,
+by suggesting the addition of this line between lines 2 and 3:
+\begin{lstlisting}[language=Python,numbers=none]
+Ω = {"".join(outcome) for outcome in Ω}
+\end{lstlisting}
+
+Then a second program was introduced. In fact, it was just a slight modification of the first program,
+but, for simplicity, the whole code was announced (see Fig.~\ref{5b.py}).
+\begin{figure}
+\lstinputlisting[language=Python]{../progs/en_US/5b.py}
+\caption{The second program in the fifth sheet (translated into English)}
+\label{5a.py}
+\end{figure}
+Here the assignment was to give a random variable $X$ whose expected value is computed in the program.
+Another assignment was to explain why the expected value $2.5$ is printed. Then, this result
+had to be generalized by changing the code \texttt{repeat=5} to other values. Finally,
+also the variance had to be computed by adding some more lines to the code.
+
+\subsubsection*{The results}
+
+The first program was well identified by all students---a fair coin was tossed 5 times,
+and the probability of the appearance of exactly two heads was computed.
+Applying the technical hint was unsuccessful for two students (for one the closing brace was missing,
+for another one the issue was unclear).
+
+For the second program, one student added the line \texttt{print(len($\Omega$))} to better understand the
+code. (In fact, the function \texttt{len} was already introduced in the third sheet.) Instead
+of mentioning symmetry, the same student argued by citing the formula $E=n\cdot p$ for the
+binomial distribution where $n$ denotes the number of independent experiments and $p$ the probability
+of success (here $0.5$). The same student computed the variance by multiplying $E$ with $0.5$---this
+is correct for the given assignment, but here no programming was used, just theory.
+
+The other students explained the result $2.5$ by mentioning symmetry, and the same argument was
+used for the generalization. But no answer was found to compute the variance, only for one student,
+and in that case it was incorrect (see Fig.\ref{52})---clearly, on line 10 something like
+\begin{lstlisting}[language=Python,firstnumber=10]
+  Varianz = Varianz + (w.count("K")-Erwartungswert)**2
+\end{lstlisting}
+should have been written. Actually, the notation \texttt{**2} could be something unfamiliar
+for those who never did any programming before. Anyway, the result $0.078125$ should have been
+suspicious. It is also remarkable that this student preferred the Latin alphabet to Greek characters.
+\begin{figure}
+\begin{center}\includegraphics[width=1.0\textwidth]{52}
+\caption{A student's incorrect program code to compute variance in sheet 5}
+\label{52}
+\end{center}
+\end{figure}
+
+\subsection*{Sheet 6}
+
+We identified the assignment to compute the variance in the fifth sheet somewhat unsuccessful.
+So we continued by sharing two correct solutions to compute the variance (see Fig.~\ref{6a.py}
+and \ref{6b.py}).
+
+\begin{figure}
+\lstinputlisting[language=Python]{../progs/en_US/6a.py}
+\caption{A correct solution to compute the variance (translated into English)}
+\label{6a.py}
+\end{figure}
+
+\begin{figure}
+\lstinputlisting[language=Python]{../progs/en_US/6b.py}
+\caption{Another correct solution to compute the variance (translated into English)}
+\label{6b.py}
+\end{figure}
+
+The students had to compare these two program codes, check if their outputs are the same
+(even for 6 or 7 tosses), and find the differences between the way of programming.
+We actually wanted to add another connection with theory, namely, to verify if the
+formula
+\begin{equation}
+V(X)=E((X-E(X))^2)=E(X^2)-E(X)^2
+\label{variance}
+\end{equation}
+can be reflected in the two solutions.
+
+As another activity, a third program was given (see Fig.~\ref{6c.py}) to prepare the last
+topic, namely, some steps towards the central limit theorem (CLT).
+\begin{figure}
+\lstinputlisting[language=Python]{../progs/en_US/6c.py}
+\caption{A third program in the sixth sheet (translated into English)}
+\label{6c.py}
+\end{figure}
+Here we provide the questions to this third program:
+\begin{enumerate}
+\item What computation is performed by this program?
+\item Consider following modifications:
+\begin{lstlisting}[language=Python,firstnumber=2]
+Ω = set(itertools.product({1, 2, 3, 4, 5, 6}, repeat=4))
+possible_values = range(30)
+\end{lstlisting}
+\begin{lstlisting}[language=Python,firstnumber=8]
+  heads[sum(ω)] += 1
+\end{lstlisting}
+Explain the output of the modified program.
+\item We are about to plot the obtained data. So we change line 10 as follows:
+\begin{lstlisting}[language=Python,firstnumber=10]
+for w in zip(*(possible_values, probabilities)):
+  print(f"{w[0]},{w[1]}")
+\end{lstlisting}
+Copy the output of this program in a spreadsheet software and create an XY diagram
+to get some graphical output.
+\item Extend the program with these two additional lines:
+\begin{lstlisting}[language=Python,firstnumber=12]
+distribution = [sum(probabilities[:h]) for h in possible_values]
+print(list(zip(*(possible_values, distribution))))
+\end{lstlisting}
+Explain the result.
+\end{enumerate}
+In fact, the variable naming was somewhat incorrect here (because \texttt{heads} 
+actually refers to the sums of the outcomes), but we wanted to make very little
+changes on the code.
+
+Among the authors there was a quite a long discussion on getting the output in
+the best fashion. The Python construction \texttt{list(zip(*(...)))} is a kind
+of compromise between beautiful output with much code and simple output with less code,
+however, this is something non-trivial in Python.
+Finally a graphical output was also expected---students should be familiar with
+popular spreadsheet software and visualize data in an easier way than programming.
+
+\subsubsection*{The results}
+
+For the first part, all solutions were correct: three of them mentioned that
+for the second code only one loop is required, so it is somewhat more effective.
+In fact all of the turned-in solutions lacked of the wow feeling that we used
+the formula (\ref{variance}). One student reported
+experiments to learn if \texttt{**} is a typo or not---finally the correct interpretation
+was found: it is \textit{the power sign}.
+
+For the second part, the students successfully identified the purpose of the third program
+(that is, to find all probabilities for the different number of heads for 5 tosses), and of the changed one
+(to find all probabilities of the sums of the outcomes for 4 dice). Both the density
+function and the cumulative distribution were obtained correctly, and for the former,
+a graphical output was always attached. (One student created a graph for the latter as well.)
+We also learned that, in the case of three students, the density function of the
+\textit{discrete} binomial distribution
+was incorrectly identified, namely, as a \textit{continuous} normal distribution.
+
+We also noted that the modification \texttt{possible\_values = range(30)} aroused interest
+among the students,
+namely, to find the meaning of the number 30. (In fact, only the sums $4,5,\ldots,24$
+had a meaning, but for simplicity we wanted to avoid any manipulation of the indexes of
+the arrays.)
+
+\subsection*{Sheet 7}
+
+In the final sheet we wanted to point towards CLT, and thus we gave two programs:
+they can be seen in Fig.~\ref{7a.py} and \ref{7b.py}).
+
+\begin{figure}
+\lstinputlisting[language=Python]{../progs/en_US/7a.py}
+\caption{First program in the seventh sheet (translated into English)}
+\label{7a.py}
+\end{figure}
+
+\begin{figure}
+\lstinputlisting[language=Python]{../progs/en_US/7b.py}
+\caption{Second program in the seventh sheet (translated into English)}
+\label{7b.py}
+\end{figure}
+
+In fact, these two programs are almost the same, just the outputs differ: the second
+one results in a nice diagram via \texttt{matplotlib} (see Fig.~\ref{72a}). We provided an alternative
+way to plot a vertical bar chart with the following suggestion:
+\begin{lstlisting}[language=Python,firstnumber=10]
+  p.bar(range(1, max_tosses * 6 + 1), probabilities[1:], alpha=0.5)
+\end{lstlisting}
+This is mathematically more correct because the discrete values are highlighted
+(see Fig.~\ref{72b}).
+On the other hand, to point towards CLT, also a continuous diagram makes sense.
+
+\begin{figure}
+\centering
+\subfloat[An XY diagram via \texttt{pyplot.plot}]{%
+\resizebox*{6cm}{!}{\includegraphics{72a}}\label{72a}}\hspace{5pt}
+\subfloat[A bar chart via \texttt{pyplot.bar}]{%
+\resizebox*{6cm}{!}{\includegraphics{72b}}}
+\caption{Graphical outputs of the second program in the seventh sheet} \label{sample-figure}
+\end{figure}
+
+Technically, we asked the students to use
+Sage worksheets at \url{cocalc.com} since it provides a simple interface to obtain
+the graphical result.
+
+In this closing activity we requested to obtain as many mathematical properties of the bar chart
+as possible. We asked the students to generalize their experiences. We wanted them to
+focus on using notions which are also familiar in a secondary school context. We clarified
+that notions like sequence, limit, function, density function, expected value, variance,
+standard deviation and normal distribution are all allowed.
+
+\subsubsection*{The results}
+
 \section*{Acknowledgement(s)}
 
 \begin{thebibliography}{99}
