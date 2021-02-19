@@ -158,12 +158,6 @@ But, instead of giving a problem in probability theory and asking for a solution
 project we reversed the logic: We revealed the Python code in advance, and wanted to know
 what problem will be solved with its help.
 
-%\begin{figure}
-%\lstinputlisting[language=Python]{../progs/de_AT/1.py}
-%\caption{The first program in its original form (in German)}
-%\label{1.py}
-%\end{figure}
-
 The first example is shown in Fig.~\ref{main-py-window}. We kept the original version to highlight
 the possibility to write special characters in the Python code (we used Python version 3),
 including accented German letters. In the first sheet of problems each student had to try
@@ -174,7 +168,7 @@ We also instructed all students with an
 explanatory screenshot how the program should be started and the output obtained.
 
 \begin{figure}
-\begin{center}\includegraphics[scale=0.5]{../forms/de_AT/main-py-window}
+\begin{center}\includegraphics[scale=0.4]{../forms/de_AT/main-py-window}
 \caption{An explanatory screenshot to help the students' first steps}
 \label{main-py-window}
 \end{center}
@@ -368,7 +362,7 @@ experimenting.)
 \end{figure}
 
 The last question was solved perfectly by 3 students, giving the answer
-$$E=\{\omega\;\mid\;\omega\in\Omega \land X(\omega)=10\}$$
+$$E=\{\omega\;\mid\;\omega\in\Omega\;\land\;X(\omega)=10\}$$
 where $X(\omega)=\omega_1+\omega_2$. Here we concluded that the technical
 fact that Python's indexing starts from $0$, can be confusing for beginners,
 since in mathematics the usual indexing starts from $1$.
@@ -396,7 +390,7 @@ but, for simplicity, the whole code was announced (see Fig.~\ref{5b.py}).
 \begin{figure}
 \lstinputlisting[language=Python]{../progs/en_US/5b.py}
 \caption{The second program in the fifth sheet (translated into English)}
-\label{5a.py}
+\label{5b.py}
 \end{figure}
 Here the assignment was to give a random variable $X$ whose expected value is computed in the program.
 Another assignment was to explain why the expected value $2.5$ is printed. Then, this result
@@ -452,13 +446,14 @@ and \ref{6b.py}).
 \end{figure}
 
 The students had to compare these two program codes, check if their outputs are the same
-(even for 6 or 7 tosses), and find the differences between the way of programming.
+(even for 6 or 7 dice), and find the differences between the way of programming.
 We actually wanted to add another connection with theory, namely, to verify if the
 formula
 \begin{equation}
 V(X)=E((X-E(X))^2)=E(X^2)-E(X)^2
 \label{variance}
 \end{equation}
+(also known as Steiner's \textit{Verschiebungssatz}, that is, \textit{translation theorem})
 can be reflected in the two solutions.
 
 As another activity, a third program was given (see Fig.~\ref{6c.py}) to prepare the last
@@ -515,9 +510,9 @@ experiments to learn if \texttt{**} is a typo or not---finally the correct inter
 was found: it is \textit{the power sign}.
 
 For the second part, the students successfully identified the purpose of the third program
-(that is, to find all probabilities for the different number of heads for 5 tosses), and of the changed one
+(that is, to find all probabilities for the different number of heads for 5 dice), and of the changed one
 (to find all probabilities of the sums of the outcomes for 4 dice). Both the density
-function and the cumulative distribution were obtained correctly, and for the former,
+function and the cumulative distribution function (CDF) were obtained correctly, and for the former,
 a graphical output was always attached. (One student created a graph for the latter as well.)
 We also learned that, in the case of three students, the density function of the
 \textit{discrete} binomial distribution
@@ -550,7 +545,7 @@ In fact, these two programs are almost the same, just the outputs differ: the se
 one results in a nice diagram via \texttt{matplotlib} (see Fig.~\ref{72a}). We provided an alternative
 way to plot a vertical bar chart with the following suggestion:
 \begin{lstlisting}[language=Python,firstnumber=10]
-  p.bar(range(1, max_tosses * 6 + 1), probabilities[1:], alpha=0.5)
+  p.bar(range(1, max_dice * 6 + 1), probabilities[1:], alpha=0.5)
 \end{lstlisting}
 This is mathematically more correct because the discrete values are highlighted
 (see Fig.~\ref{72b}).
@@ -577,10 +572,106 @@ standard deviation and normal distribution are all allowed.
 
 \subsubsection*{The results}
 
-\section*{Acknowledgement(s)}
+The students managed to visualize both diagrams and most of them concluded that the bar chart is
+more useful to study the exact values of the functions. A student, however, preferred the XY diagram
+that may provide more precise values.
+They managed to read off the following relationships:
+\begin{enumerate}
+\item The definite integral of the density function is $1$ (between $0$ and $25$).
+\item The maximum of the density function is reached at the expected value. There is a clear
+relationship between the expected value and the number of rolls.
+\end{enumerate}
+
+According to CLT, the following statements were claimed (here and from now on we use $d$
+for the number of dice):
+\begin{itemize}
+\item ``The more rolls you perform, the clearer the normal distribution of the [density] function becomes.''
+\item For $d=3$ and $d=4$ ``it is clear that it is about the normal distribution of the sums,
+because of its beautiful bell shaped curve.''
+\item For $d=3$ ``we already obtain an approximate Gaussian bell curve (normal distribution).''
+\item For $d=4$ ``we can already see a beautiful normal distribution with the expected value 14.''
+\end{itemize}
+
+Unfortunately, the notion ``limit'' was mixed with the notion ``maximum'' in some sense, so two students did not
+observe at all how the situation changes if $d\to\infty$. One student studied each density function
+in the case $h\to\infty$ (cf.~line 9 in Fig.~\ref{7b.py}), to obtain its limit, which is, of course, $0$.
+(Also the same student dealt with the case $h\to-\infty$.) Finally, this student used 
+the $68.27\%$ rule (by using external information from a different course on
+probability theory) to get the standard deviation in the case $d=4$,
+under the assumption that $i$ is an inflection point of the density function:
+\begin{equation}
+\Phi\left(\frac{i-E(X)}{\sqrt{V(X)}}\right)=0.6827,
+\end{equation}
+where $\Phi$ denotes the CDF of the standard normal distribution, and the inflection point is guessed
+to be at $i=18$. With this approximation formula the value $\sqrt{V(X)}\approx8.33$ can be obtained.
+
+\section{Discussion}
+
+We did not have any preliminary goals at the beginning of this project, only to connect theory and
+practice via programming. After evaluating the solutions we have the feeling that all students
+have a safer approach to problem solving in probability theory, and they have no fear to give
+a computer program a chance to do experiments. That is, even if they need to modify the program code,
+studying via programming experiments is a feasible way.
+
+Our project confirmed that Python is a very useful and practical tool to collect exact data
+to study probability theory---even if there can appear some minor inconveniences.
+As one student pointed out, by using Sage, symbolic computation
+supports even more precise observations---for example, the first program in the last sheet
+(Fig.~\ref{7a.py}) was accidentally launched in Sage as well and all results were shown
+as vulgar fractions.
+
+On the other hand, connecting theory and the result of a program was not always straightforward.
+Students identified the CDF very well, but they were unable to recognize the CLT, even if
+it was discussed during the former course---but maybe without a result of deeper understanding.
+On the other hand, the CLT was not directly asked in the seventh sheet,
+so the problem setting was maybe not clear enough.
+
+We conjecture that making a difference between a discrete distribution and a continuous one may be
+a big jump in the level of understanding for the student. Discrete distributions are \textit{never} normal,
+and to speak about a Gaussian distribution one should introduce the notion of limit in a very
+delicate form. Here, we should translate the random variable $X$ to have the expected value $0$ first,
+and then normalize it by a function of $d$. We did not see any sign of this concept among the
+students' solutions. Maybe, in a next project, we will explicitly ask the students to try to
+\textit{approximate} the discrete distributions with a continuous one, by searching for the adequate
+expected value and standard deviation. Also, experimenting with higher values for $d$ should also be
+suggested---no student
+tried to increase the value of \texttt{max\_dice}, even if technically it is possible to try
+\texttt{max\_dice = 8} in a \texttt{cocalc.com} Sage session. (Fig.~\ref{10} shows the output
+for \texttt{max\_dice = 10} when run natively on a recent computer, after about 1 minutes
+of computation. Here we warn the reader that a sample space $\Omega$ with more than 60 millions of elements
+must be observed, since $|\Omega|=6^{10}=60,466,176$.)
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=0.7\textwidth]{10}
+\caption{Increasing the value of \texttt{max\_dice} to $10$}
+\label{10}
+\end{center}
+\end{figure}
+
+Finally, we remark that experimenting with a non-fair die could be another step to explain
+the CLT in a more general approach. A fair die, after rolled three or four times,
+results in a ``too symmetrical'' binomial distribution---it can be confused with
+the normal distribution. A non-symmetrical result, which is still similar enough
+to the normal distribution to make a conjecture, could be eventually a better
+example to promote understanding the CLT and help students in formalizing it---just
+by using their experiments and own words.
+(For a nice continuous example we refer to the Wikipedia page
+\url{https://en.wikipedia.org/wiki/Illustration_of_the_central_limit_theorem#Illustration_of_the_continuous_case}.)
+
+\section{Conclusion}
+
+We reported on an experimental project that connects an email based Python course
+and former knowledge of elementary concepts of probability theory.
+We think our results successfully present that there is room for this kind of approach
+in the education. We also think that our method should be further refined and tested.
+
+\section*{Acknowledgements}
+
+We are thankful to our students Alexander, Romana, Sandra and Sarah
+for their participation in the project.
 
 \begin{thebibliography}{99}
-
 
 \end{thebibliography}
 
