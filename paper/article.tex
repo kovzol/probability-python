@@ -111,11 +111,15 @@ the most difficult field of mathematics---if it is about \textit{understanding}.
 of statistical relationships seems to be easier than explaining the delicate issues
 of properties of binomial coefficients, infinite sums and convergence. Indeed, in some
 sense, statistics is much easier to explain---one needs to run virtual experiments
-in a web browser % add links to Steve Phelps' https://www.geogebra.org/m/bxytp4hq, Ice Cream
-% https://www.geogebra.org/m/qsjbqjfe, Broken Stick
-% https://www.geogebra.org/m/bu5sxbn2, Fair Coin
-% + Andreas Lindner's collections: https://www.geogebra.org/m/AytaSakt, https://www.geogebra.org/m/qXPnyCTZ
-and this is well supported for several years, among others, in the online version of GeoGebra.
+in a web browser
+and this is well supported for several years, among others, in the online version of GeoGebra\footnote{%
+See, for example, Steve Phelps' online applets
+\url{https://www.geogebra.org/m/bxytp4hq},
+\url{https://www.geogebra.org/m/qsjbqjfe} and
+\url{https://www.geogebra.org/m/bu5sxbn2},
+that visualize experiments with ice cream purchases, a broken stick or a fair coin, respectively;
+or check out Andreas Lindner's collections at \url{https://www.geogebra.org/m/AytaSakt}
+and \url{https://www.geogebra.org/m/qXPnyCTZ}.}.
 
 Connecting pure mathematics and real life or virtual experiments, can be, to our experience,
 extremely hard. Probability is an important item of the curriculum at secondary level,
@@ -125,12 +129,12 @@ Our conjecture is that the main problem lies in students' verification if theory
 so, at the end of the day, a very uncertain knowledge can be observed in the students' perception. As a consequence,
 in most cases, not just yesterday's and today's mathematics teachers cannot connect
 theory and practice, but their students either. Roughly speaking: everybody talks about probability and
-statistics, but nobody understands anything behind the scenes.
+statistics, but nearly nobody understands anything behind the scenes.
 
-In our paper we propose a radical way, or at least, to extend the classic way how
+In our paper we propose a radical way, or at least an extension of the classic way, how
 basics of elementary probability theory should be taught. It is \textit{programming}.
 Our conjecture is that understanding will be significantly improved if the main concepts
-of probability theory are supported with simple computer programs. The ouput for their flexible input
+of probability theory are supported with simple computer programs. The output for their flexible input
 should be immediately checked, eventually in a web browser, and by changing the input parameters
 to a higher number, the results can be quickly generalized. We emphasize that computers
 can take on the high number of computatations from human---and this is what we exactly want.
@@ -151,21 +155,60 @@ and took place between November 2020 and January 2021, at the Johannes Kepler Un
 \label{preps}
 
 First author hold a series of supplementary lectures on probability theory two years ago, where second author
-took part a student and illustrated several homework assignments by using Python programs.
+took part as a student and illustrated several homework assignments by using Python programs.
 Some of his illustrations were a bit complicated for beginners, so the idea came that
 simplified versions of such programs could be helpful for many students.
 But, instead of giving a problem in probability theory and asking for a solution, in this
 project we reversed the logic: We revealed the Python code in advance, and wanted to know
 what problem will be solved with its help.
 
-The first example is shown in Fig.~\ref{main-py-window}. We kept the original version to highlight
+\subsection{Why Python?}
+
+Why did we choose Python as the programming language for this course?
+There are a couple of reasons we would like to note. First of all: It is
+free, independent of the used operating system, has good documentation
+and great tutorials. In addition, Python is currently a very popular
+programming language: according to
+\url{https://madnight.github.io/githut/#/pull_requests/2020/4}, Python
+was the second most popular language on GitHub in the 4th quarter of 2020;
+moreover, ZDNet's recent article \cite{LiamTung2020} highlights that Python
+was the second best popular language in November 2020.
+Many programming courses teach it as a first
+programming language because of its ease of use and short expressive
+code.
+
+Also, we think that Python is a great tool to express mathematical
+concepts in a concise and direct way---several recent books give
+examples on a possible start, see e.g.~\cite{Fuhrer2016}, \cite{Mehta2015} and \cite{Stewart2014}.
+In fact, in our course students
+needed to learn classic programming concepts like conditions and loops
+together with probability, so we needed a programming language with a
+steep learning curve. We think Python can be seen as a great tool that
+supports students with the understanding of mathematical probability
+concepts without the need to learn too much programming.
+
+On the other hand, in the field of data science
+Python is currently the mostly used programming language. Especially in
+machine learning, which could be seen as an advanced application of
+probability, Python is very popular. We think that students who believe
+that the exercises they solve are not artificially constructed for the
+course, but have some connection to the real world, will be more
+motivated. As a teacher we can give students the impression that if they
+use Python in their introductory course on probability, they take a first
+step into the prestigious field of data science. This may increase the
+motivation of students and as a result they will achieve higher.
+
+\subsection{The programs}
+
+The first example of the introduced Python programs
+is shown in Fig.~\ref{main-py-window}. We kept the original version to highlight
 the possibility to write special characters in the Python code (we used Python version 3),
 including accented German letters. In the first sheet of problems each student had to try
 the code on his or her own on the website \url{https://repl.it/languages/python3},
 by paying attention on the correct indentation as well---the students, however, did not have
 to type the code but just copy it from the email into the programming window.
 We also instructed all students with an
-explanatory screenshot how the program should be started and the output obtained.
+explanatory screenshot how the program should be started and the output can be obtained.
 
 \begin{figure}
 \begin{center}\includegraphics[scale=0.4]{../forms/de_AT/main-py-window}
@@ -185,7 +228,7 @@ The students were informed that about 6--8 sheets should be solved in the projec
 and the required time for each should not exceed one hour.
 
 In fact, we created a couple of other programs in advance, but always waited for
-all solutions turned in by the students before finalizing the next sheet of problems.
+all solutions to be turned in by the students before finalizing the next sheet of problems.
 We \textit{did not} give any feedback on their solutions. Instead, if we felt that
 some difficulties arose, then we tried to cover them in the next sheet of problems.
 The reason behind this was to test if it is possible to create a set of problems
@@ -194,7 +237,7 @@ was not fully static, for a future project now we already have a static set of m
 
 Here we emphasize that easy access to an online version of a Python interpreter
 played a significant role in our project. We did not want to ask the students
-to install anything on their computer. Instead, we tried to minimize the gap
+to install anything on their computers. Instead, we tried to minimize the gap
 between theory and practice. In fact, \url{repl.it} is not the only website
 allowing the user to try his or her code freely---we were just
 satisfied with its simple user interface. Later, to obtain graphical output in an easy way, we also
@@ -453,11 +496,11 @@ formula
 V(X)=E((X-E(X))^2)=E(X^2)-E(X)^2
 \label{variance}
 \end{equation}
-(also known as Steiner's \textit{Verschiebungssatz}, that is, \textit{translation theorem})
+(also known as Steiner translation theorem in Germany and König-Huygens formula in the French literature)
 can be reflected in the two solutions.
 
 As another activity, a third program was given (see Fig.~\ref{6c.py}) to prepare the last
-topic, namely, some steps towards the central limit theorem (CLT).
+topic, namely, some steps towards the central limit theorem (CLT, \cite{Polya1920}).
 \begin{figure}
 \lstinputlisting[language=Python]{../progs/en_US/6c.py}
 \caption{A third program in the sixth sheet (translated into English)}
@@ -626,7 +669,28 @@ it was discussed during the former course---but maybe without a result of deeper
 On the other hand, the CLT was not directly asked in the seventh sheet,
 so the problem setting was maybe not clear enough.
 
-We conjecture that making a difference between a discrete distribution and a continuous one may be
+At this point we need to give some description on which form of CLT should be expected to discover by the students.
+In fact, CLT has several versions: both formal and informal variants. Roughly speaking, CLT can be summarized
+in the following form (see \cite{Wikipedia-CLT}):
+\begin{quote}
+When independent random variables are added, their properly normalized
+sum tends toward a normal distribution (informally a bell curve) even if
+the original variables themselves are not normally distributed.
+\end{quote}
+A formal definition given in \cite[p.~241]{Montgomery2014} is as follows:
+\begin{quote}
+If $X_{1},X_{2},\ldots,X_{n}$
+are $n$ random samples drawn from a population
+with overall mean $\mu$ and finite variance $\sigma^2$,
+and if ${\bar {X}}_{n}$ is the sample mean, the
+limiting form of the distribution, $$Z=\lim _{n\to \infty}{\sqrt {n}}{\left({\frac {{\bar {X}}_{n}-\mu }
+{\sigma}}\right)},$$ is the standard normal
+distribution.
+\end{quote}
+In fact, we avoided going into any formal detail during our course by assuming that the provided formula
+here \textit{may not promote understanding}.
+
+More importantly, we conjecture that making a difference between a discrete distribution and a continuous one may be
 a big jump in the level of understanding for the student. Discrete distributions are \textit{never} normal,
 and to speak about a Gaussian distribution one should introduce the notion of limit in a very
 delicate form. Here, we should translate the random variable $X$ to have the expected value $0$ first,
@@ -666,13 +730,19 @@ and former knowledge of elementary concepts of probability theory.
 We think our results successfully present that there is room for this kind of approach
 in the education. We also think that our method should be further refined and tested.
 
+We emphasize that this research just the first step in a longer research project.
+Basically, we would like to continue with interviews with the participating
+students whether their knowledge and motivation were improved during the course.
+This will give us further feedback to meet the best decision towards further
+refinements of the course.
+
 \section*{Acknowledgements}
 
 We are thankful to our students Alexander, Romana, Sandra and Sarah
 for their participation in the project.
 
-\begin{thebibliography}{99}
 
-\end{thebibliography}
+\bibliographystyle{tfs}
+\bibliography{article}
 
 \end{document}
