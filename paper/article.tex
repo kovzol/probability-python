@@ -520,7 +520,7 @@ possible_values = range(30)
 Explain the output of the modified program.
 \item We are about to plot the obtained data. So we change line 10 as follows:
 \begin{lstlisting}[language=Python,firstnumber=10]
-for w in zip(*(possible_values, probabilities)):
+for w in zip(possible_values, probabilities):
   print(f"{w[0]},{w[1]}")
 \end{lstlisting}
 Copy the output of this program in a spreadsheet software and create an XY diagram
@@ -528,7 +528,7 @@ to get some graphical output.
 \item Extend the program with these two additional lines:
 \begin{lstlisting}[language=Python,firstnumber=12]
 distribution = [sum(probabilities[:h]) for h in possible_values]
-print(list(zip(*(possible_values, distribution))))
+print(list(zip(possible_values, distribution)))
 \end{lstlisting}
 Explain the result.
 \end{enumerate}
@@ -537,7 +537,7 @@ actually refers to the sums of the outcomes), but we wanted to make very little
 changes on the code.
 
 Among the authors there was a quite a long discussion on getting the output in
-the best fashion. The Python construction \texttt{list(zip(*(...)))} is a kind
+the best fashion. The Python construction \texttt{list(zip(...))} is a kind
 of compromise between beautiful output with much code and simple output with less code,
 however, this is something non-trivial in Python.
 Finally a graphical output was also expected---students should be familiar with

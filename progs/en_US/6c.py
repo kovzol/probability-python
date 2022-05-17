@@ -7,4 +7,4 @@ heads = [0]*len(possible_values)
 for ω in Ω:
   heads[ω.count("h")] += 1
 probabilities = [h/len(Ω) for h in heads]
-print(list(zip(*(possible_values, probabilities))))
+print(list(zip(possible_values, probabilities)))
